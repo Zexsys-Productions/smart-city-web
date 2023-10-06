@@ -1,0 +1,22 @@
+.app-container {
+  position: relative;
+}
+
+.text-container {
+  position: absolute;
+  z-index: 1; /* Ensure the text is above the Spline scene */
+  top: 50%;
+  left: 5%; /* Adjust to move the text a bit to the left */
+  transform: translateY(-50%); /* Center the text vertically */
+  padding: 10px;
+  font-size: 2em; /* Make text big */
+  font-weight: bold; 
+  color: #ffffff; /* Set text color */
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.text-container.hovered {
+  color: #ffffff; /* Change color when hovered */
+  transform: translateY(-50%) scale(1.8); /* Center and increase size when hovered */
+}
