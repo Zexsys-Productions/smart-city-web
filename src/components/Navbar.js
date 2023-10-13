@@ -6,10 +6,10 @@ const NavbarContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #2C3E50; // Aesthetic deep blue
-  color: #ECF0F1; // Off white color for contrast
-  padding: 15px 30px; // Increased padding for better spacing
-  box-shadow: 0px 4px 2px -2px gray; // subtle shadow for 3D effect
+  background: black;
+  color: #ECF0F1; 
+  padding: 15px 30px; 
+  box-shadow: 0px 4px 2px -2px gray;
 `;
 
 const NavLinks = styled.div`
@@ -37,7 +37,7 @@ const BrandName = styled.div`
 export default function Navbar() {
     return (
         <NavbarContainer>
-            <BrandName>Zexsys</BrandName>
+            <BrandName>CityPulse</BrandName>
             <NavLinks>
                 <StyledLink to="/">Home</StyledLink>
                 <StyledLink to="/about">About Us</StyledLink>
