@@ -1,16 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { Parallax } from 'react-scroll-parallax';
+import React, { useState, useEffect, useRef } from 'react';
 import Spline from '@splinetool/react-spline';
-import styled, { keyframes, css } from 'styled-components';
+import styled, { keyframes, css, createGlobalStyle } from 'styled-components';
 import { RaceBy } from '@uiball/loaders';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
+import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+
+// Lottie Animation Settings
+import Lottie from 'react-lottie';
+import * as smartCityAnimationData from '../lottie/smartcity.json';
+
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: smartCityAnimationData,
+  rendererSettings: {
+    preserveAspectRatio: 'xMidYMid meet' 
+  }
+};
+
+const GlobalStyles = createGlobalStyle`
+  body::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+`;
+
 
 const AppContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: black;
 `;
 
 const SplineWrapper = styled.div`
@@ -68,10 +94,24 @@ const InfoSection = styled.section`
 const InfoBlock = styled.div`
   max-width: 800px;
   margin-bottom: 40px;
+  
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap; 
+   
+   & > * {
+     margin-right:20px;
+     &:last-child{
+       margin-right :0 ;
+     }
+   }
+   @media (max-width :768px){
+    & > *{
+      width :100%;
+      margin-right :0 ;
+    }
+}
 `;
+
 
 const InfoImage = styled.img`
   max-width: 100%;
@@ -117,7 +157,6 @@ const TransparentButton = styled.button`
     box-shadow: 0 0 50px 20px rgba(128, 0, 128, 0.5); 
   }
 
-  // These styles override the inherited properties
   background-clip: padding-box; 
   -webkit-text-fill-color: white;  
 
@@ -158,19 +197,31 @@ const LoaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 1); 
+  background-color: black; 
   z-index: 9999;
   animation: ${props => props.shouldFadeOut ? css`${FadeOutAnimation} 1s forwards` : "none"};
 `;
 
+const GlowingText = styled.span`
+  color: ${props => props.color};
+  text-shadow: 0 0 10px ${props => props.color}, 
+               0 0 20px ${props => props.color}, 
+               0 0 30px ${props => props.color}, 
+               0 0 40px ${props => props.color};
+`;
+
 const AQISection = styled.section`
   padding: 40px 20px;
-  background-color: #333;
+  background-color: #111;
   color: #fff;
   display: flex;
   justify-content: space-around;
   align-items: center;
   font-size: 1.5em;
+`;
+
+const AQINumber = styled.span`
+  color: ${props => props.city === 'Malang (Smart City)' ? 'green' : 'red'};
 `;
 
 const AQIData = ({ city, url }) => {
@@ -199,7 +250,9 @@ const AQIData = ({ city, url }) => {
       <strong>{city}: </strong>
       {data !== null && (
         inView ? (
+        <GlowingText color={city === 'Malang (Smart City)' ? 'green' : 'red'}>
           <CountUp end={data.aqi} duration={2.5} />
+        </GlowingText>
         ) : (
           'Loading...'
         )
@@ -208,10 +261,10 @@ const AQIData = ({ city, url }) => {
   );
 };
 
-
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [shouldFadeOut, setShouldFadeOut] = useState(false);
+  const parallax = useRef();
 
   const isMobileView = window.innerWidth <= 768;
 
@@ -234,37 +287,49 @@ export default function Home() {
       {!isLoaded && (
         <LoaderContainer shouldFadeOut={shouldFadeOut}>
           <RaceBy 
-            size={80}
-            lineWeight={5}
+            size={250}
+            lineWeight={8}
             speed={1.4} 
-            color="black" 
+            color="white" 
           />
         </LoaderContainer>
       )}
       {isMobileView && <WarningMessage>Mobile view not supported, use a desktop browser to continue...</WarningMessage>}
-      <SplineWrapper>
-        <TextContainer>
-          Shaping Tomorrow's 
-          <br />
-          Cities, Today.
-          <br />
-          <br />
-          <TransparentButton>Explore More</TransparentButton>
-        </TextContainer>
-        <Parallax y={[50, -50]} tagOuter="figure">
-          <Spline scene="https://prod.spline.design/EIXWxLw12PpD7tBQ/scene.splinecode" />
-        </Parallax>
-      </SplineWrapper>
-      <InfoSection>
+      <Parallax pages={3} ref={parallax}>
+        {/* Spline Layer */}
+        <ParallaxLayer offset={0} speed={0.3}>
+        <SplineWrapper>
+          <TextContainer>
+            Shaping Tomorrow's 
+            <br />
+            Cities, Today.
+            <br />
+            <br />
+            <TransparentButton onClick={() => parallax.current.scrollTo(1.25  )}>
+              Explore More
+            </TransparentButton>
+          </TextContainer>
+           <Spline scene="https://prod.spline.design/EIXWxLw12PpD7tBQ/scene.splinecode" />
+        </SplineWrapper>
+        </ParallaxLayer>
+        {/* Other Content Layer */}
+        <ParallaxLayer offset={1.4} speed={0.7}>
+        <InfoSection>
         <InfoBlock>
           <InfoHeader>What is a Smart City?</InfoHeader>
           <InfoText>
             A smart city utilizes digital technology to connect, protect, and enhance the lives of citizens. IoT sensors, video cameras, social media, and other inputs act as a nerve center providing a city operator and its citizens with a real-time view of what's happening.
           </InfoText>
+          <Lottie 
+            isStopped={false}
+            options={defaultOptions}
+            height={400}
+            width={400}
+          />
         </InfoBlock>
-      </InfoSection>
+</    InfoSection>
       <AQISection>
-        <h2>Realtime Air Quality Index</h2>
+        <h2>Realtime Air Quality Index:</h2>
         <AQIData 
           city="Malang (Smart City)"
           url="https://api.waqi.info/feed/A416914/?token=133a79b33b32ccd7d5f484ba7746aa1548a53b3e"
@@ -283,22 +348,26 @@ export default function Home() {
         </InfoBlock>
 
         <InfoBlock>
-          <InfoImage src="path_to_image_3.jpg" alt="Key Technologies in Smart Cities" />
-          <InfoHeader>Key Technologies in Smart Cities</InfoHeader>
+          <InfoHeader>Introducing CityScape</InfoHeader>
           <InfoText>
             From IoT sensors, AI-driven analytics, advanced mobility solutions to cloud platforms, these technologies help cities gather valuable data to make informed decisions, improving urban life.
           </InfoText>
         </InfoBlock>
 
         <InfoBlock>
-          <InfoImage src="path_to_image_4.jpg" alt="Challenges in Building Smart Cities" />
-          <InfoHeader>Challenges in Building Smart Cities</InfoHeader>
+          <InfoHeader>How does it work?</InfoHeader>
           <InfoText>
-            While there are immense benefits, building a smart city comes with its challenges including high costs, security concerns, and the need for interdisciplinary collaboration.
+            By partnering and watching official government data, we can provide you with the latest information about the air quality in your city.
           </InfoText>
         </InfoBlock>
       </InfoSection>
+      </ParallaxLayer>
+
+        </Parallax>
       <Footer>Made by Zexsys, {new Date().getFullYear()}</Footer>
+      <GlobalStyles />
     </AppContainer>
   );
 }
+
+      

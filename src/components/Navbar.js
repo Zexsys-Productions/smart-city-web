@@ -10,7 +10,11 @@ const NavbarContainer = styled.nav`
   color: #ECF0F1; 
   padding: 15px 30px; 
   box-shadow: 0px 4px 2px -2px gray;
+
+   position: relative; 
+   z-index: 1; 
 `;
+
 
 const NavLinks = styled.div`
   display: flex;
