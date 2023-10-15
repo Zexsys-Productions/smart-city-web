@@ -44,20 +44,10 @@ The CityPulse App offers the following features:
 
 To start using CityPulse and the CityPulse App, follow these steps:
 
-1. Visit the [CityPulse Website](https://www.citypulse.com) to explore air quality data and the smart city comparison.
+1. Visit the [CityPulse Website](https://invofest.axesys.xyz/) to explore air quality data and the smart city comparison.
 
-2. Download the [CityPulse App](https://www.citypulse.com/app) from your device's app store.
-
-3. Sign up or log in to access all the app features.
-
-4. Enjoy the benefits of data-driven urban living!
-
-## Contributing
-
-CityPulse is an open-source project, and we welcome contributions from the community. Whether you're a developer, designer, or data enthusiast, your input can help us improve and expand our services. Feel free to [contribute](CONTRIBUTING.md) to CityPulse.
+2. Enjoy the benefits of data-driven urban living!
 
 ## License
 
-CityPulse is released under the [MIT License](LICENSE), which means you are free to use, modify, and distribute this project in accordance with the terms specified in the license.
-
-Thank you for choosing CityPulse to stay informed about your city's air quality and to experience the benefits of smart city living. We hope you find our platform and app valuable for enhancing your urban experience.
+As of now, we do not have an official license!
