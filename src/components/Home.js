@@ -6,6 +6,9 @@ import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
+import appImage from '../assets/app.png';
+import backgroundVideo from '../assets/timelapse.mp4';
+
 // Lottie Animation Settings
 import Lottie from 'react-lottie';
 import * as smartCityAnimationData from '../lottie/smartcity.json';
@@ -37,13 +40,21 @@ const AppContainer = styled.div`
   flex-direction: column;
   min-height: 100vh;
   background-color: black;
+  overflow: hidden;
+`;
+
+const BackgroundVideo = styled.video`
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100vh; 
 `;
 
 const SplineWrapper = styled.div`
   position: relative;
   flex-grow: 1;
 `;
-
 
 const TextContainer = styled.div`
   position: absolute;
@@ -91,7 +102,7 @@ const InfoSection = styled.section`
   color: #fff;
 `;
 
-const InfoBlock = styled.div`
+const InfoBlock1 = styled.div`
   max-width: 800px;
   margin-bottom: 40px;
   
@@ -112,12 +123,78 @@ const InfoBlock = styled.div`
 }
 `;
 
+const InfoBlock2 = styled.div`
+  max-width: 800px;
+  margin-bottom: 150px;
+  
+  display: flex;
+  flex-wrap: wrap; 
 
-const InfoImage = styled.img`
-  max-width: 100%;
-  border-radius: 10px;
-  margin-bottom: 20px;
+   & > * {
+     margin-right:20px;
+     &:last-child{
+       margin-right :0 ;
+     }
+   }
+   
+   justify-content: flex-start; // Align items inside block to the left
+   margin-right:auto; // Push entire block to left edge
+
+   @media (max-width :768px){
+    & > *{
+      width :100%;
+      margin-right :0 ;
+    }
+:`;
+
+const InfoBlock3 = styled.div`
+  max-width: 2000px; 
+  margin-bottom: 150px;
+  margin-left:500px;
+  
+  display: flex;
+  flex-direction: column; 
+  
+   & > * {
+     margin-right:20px;
+     &:last-child{
+       margin-right :0 ;
+     }
+   }
+
+   @media (min-width :1024px){
+    flex-direction: row; 
+
+    & > *{
+      width :50%; 
+      margin-right :0 ;
+    }
+}
 `;
+
+const InfoBlock4 = styled.div`
+  max-width: 800px;
+  margin-bottom: 150px;
+  
+  display: flex;
+  flex-wrap: wrap; 
+
+   & > * {
+     margin-right:20px;
+     &:last-child{
+       margin-right :0 ;
+     }
+   }
+   
+   justify-content: flex-start; // Align items inside block to the left
+   margin-right:auto; // Push entire block to left edge
+
+   @media (max-width :768px){
+    & > *{
+      width :100%;
+      margin-right :0 ;
+    }
+:`;
 
 const InfoHeader = styled.h2`
   font-size: 2em;
@@ -127,6 +204,12 @@ const InfoHeader = styled.h2`
 const InfoText = styled.p`
   text-align: justify;
 `;
+
+const AppImage = styled.img`
+  max-width: 3000px; 
+  margin-right: 20px;
+`;
+
 
 const TransparentButton = styled.button`
   margin-top: 20px;
@@ -162,8 +245,8 @@ const TransparentButton = styled.button`
 
   &:hover {
     background-image: linear-gradient(to right, purple, #8a2be2);
-    color: #fff; // Optional: If you want to change text color on hover
-    border-color: #8a2be2; // Optional: If you want to change border color on hover
+    color: #fff; 
+    border-color: #8a2be2;
   }
 `;
 
@@ -218,10 +301,6 @@ const AQISection = styled.section`
   justify-content: space-around;
   align-items: center;
   font-size: 1.5em;
-`;
-
-const AQINumber = styled.span`
-  color: ${props => props.city === 'Malang (Smart City)' ? 'green' : 'red'};
 `;
 
 const AQIData = ({ city, url }) => {
@@ -295,6 +374,9 @@ export default function Home() {
         </LoaderContainer>
       )}
       {isMobileView && <WarningMessage>Mobile view not supported, use a desktop browser to continue...</WarningMessage>}
+      <BackgroundVideo autoPlay loop muted>
+            <source src={backgroundVideo} type="video/mp4" />
+      </BackgroundVideo>
       <Parallax pages={3} ref={parallax}>
         {/* Spline Layer */}
         <ParallaxLayer offset={0} speed={0.3}>
@@ -315,7 +397,7 @@ export default function Home() {
         {/* Other Content Layer */}
         <ParallaxLayer offset={1.4} speed={0.7}>
         <InfoSection>
-        <InfoBlock>
+        <InfoBlock1>
           <InfoHeader>What is a Smart City?</InfoHeader>
           <InfoText>
             A smart city utilizes digital technology to connect, protect, and enhance the lives of citizens. IoT sensors, video cameras, social media, and other inputs act as a nerve center providing a city operator and its citizens with a real-time view of what's happening.
@@ -326,7 +408,7 @@ export default function Home() {
             height={400}
             width={400}
           />
-        </InfoBlock>
+        </InfoBlock1>
 </    InfoSection>
       <AQISection>
         <h2>Realtime Air Quality Index:</h2>
@@ -340,34 +422,36 @@ export default function Home() {
         />
       </AQISection>
       <InfoSection>
-        <InfoBlock>
+        <InfoBlock2>
           <InfoHeader>How is AQI changing as a smart city?</InfoHeader>
           <InfoText>
           Smart cities often employ IoT sensors throughout the city to monitor air quality in real time. This data can be analyzed quickly to identify pollution sources, monitor trends, and make informed decisions about how to improve air quality. By leveraging AI and machine learning algorithms, smart cities can predict future AQI based on historical data and current conditions. This allows city officials to take preemptive actions when poor air quality is expected.
           </InfoText>
-        </InfoBlock>
+        </InfoBlock2>
 
-        <InfoBlock>
-          <InfoHeader>Introducing CityScape</InfoHeader>
-          <InfoText>
-            From IoT sensors, AI-driven analytics, advanced mobility solutions to cloud platforms, these technologies help cities gather valuable data to make informed decisions, improving urban life.
-          </InfoText>
-        </InfoBlock>
+        <InfoBlock3>
+            <AppImage src={appImage} alt="App Image" />
+            <div>
+                <InfoHeader>Introducing CityScape</InfoHeader>
+                <InfoText>
+                CityScape is a cutting-edge application designed to bring the future of smart cities into the hands of its citizens. Utilizing the power of Internet of Things (IoT) technology, CityScape delivers real-time data directly to your device, providing up-to-the-minute information on a wide range of city metrics.
+                </InfoText>
+            </div>
+        </InfoBlock3>
 
-        <InfoBlock>
+
+        <InfoBlock4>
           <InfoHeader>How does it work?</InfoHeader>
           <InfoText>
-            By partnering and watching official government data, we can provide you with the latest information about the air quality in your city.
+          CityScape partners with government bodies to access real-time city data from IoT devices. This data is processed and displayed in the app, providing users with immediate insights into their urban environment. Additionally, CityScape uses AI to generate predictive analytics for future trends.
           </InfoText>
-        </InfoBlock>
+        </InfoBlock4>
       </InfoSection>
       </ParallaxLayer>
-
+        <Footer>Made by Zexsys, {new Date().getFullYear()}</Footer>
         </Parallax>
-      <Footer>Made by Zexsys, {new Date().getFullYear()}</Footer>
+
       <GlobalStyles />
     </AppContainer>
   );
 }
-
-      

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const NavbarContainer = styled.nav`
@@ -11,26 +10,10 @@ const NavbarContainer = styled.nav`
   padding: 15px 30px; 
   box-shadow: 0px 4px 2px -2px gray;
 
-   position: relative; 
-   z-index: 1; 
-`;
-
-
-const NavLinks = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const StyledLink = styled(Link)`
-  color: #ECF0F1; 
-  margin-right: 20px; 
-  text-decoration: none;
-  font-size: 1.1em; 
-  transition: color 0.3s linear;
-
-  &:hover {
-    color: #F39C12; 
-  }
+   position: fixed; 
+   top :0 ; 
+   width :100% ; 
+   z-index :100 ;
 `;
 
 const BrandName = styled.div`
@@ -42,10 +25,6 @@ export default function Navbar() {
     return (
         <NavbarContainer>
             <BrandName>CityPulse</BrandName>
-            <NavLinks>
-                <StyledLink to="/">Home</StyledLink>
-                <StyledLink to="/about">About Us</StyledLink>
-            </NavLinks>
         </NavbarContainer>
     );
 }
