@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# CityPulse - Your Smart City Companion
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to **CityPulse**, your one-stop destination for exploring air quality, comparing smart and non-smart cities, and accessing a handy app to make your city life smarter. 
 
-## Available Scripts
+## Table of Contents
+- [Introduction](#introduction)
+- [Air Quality Index (AQI) in Indonesia](#air-quality-index-aqi-in-indonesia)
+- [Smart Cities vs. Non-Smart Cities](#smart-cities-vs-non-smart-cities)
+- [Components of a Smart City](#components-of-a-smart-city)
+- [CityPulse App](#citypulse-app)
+- [How to Use CityPulse](#how-to-use-citypulse)
+- [Get Started](#get-started)
+- [Contributing](#contributing)
+- [License](#license)
 
-In the project directory, you can run:
+## Introduction
 
-### `npm start`
+CityPulse is your go-to source for understanding the air quality conditions in various cities across Indonesia. In addition, we aim to shed light on the positive impact of smart city initiatives on air quality and city living. We believe in the power of data-driven decisions, and CityPulse is designed to empower you with the knowledge you need to make informed choices.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Air Quality Index (AQI) in Indonesia
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Air quality is a critical component of urban living, and CityPulse provides real-time data on the Air Quality Index (AQI) in different cities across Indonesia. Check the AQI of your city to plan your day and protect your health. 
 
-### `npm test`
+## Smart Cities vs. Non-Smart Cities
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+CityPulse showcases how smart cities outperform non-smart cities in terms of AQI. Discover how advanced technologies and infrastructure improvements are making a difference in the air we breathe.
 
-### `npm run build`
+## Components of a Smart City
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A smart city encompasses a multitude of components working together to enhance urban living. CityPulse outlines the key elements that make a city "smart," including efficient transportation systems, sustainable energy solutions, and digital connectivity.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## CityPulse App
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+We understand that having access to this valuable information while on the go is essential. That's why we've developed the **CityPulse App**. This app is a must-have for residents of smart cities and those aspiring to be part of one.
 
-### `npm run eject`
+### How to Use CityPulse
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The CityPulse App offers the following features:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Route Planner**: Get directions to popular destinations based on real-time traffic conditions, ensuring you arrive swiftly and efficiently.
+- **AQI Tracker**: Check the air quality index for your city, helping you make decisions that benefit your health, especially if you have respiratory issues.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Get Started
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To start using CityPulse and the CityPulse App, follow these steps:
 
-## Learn More
+1. Visit the [CityPulse Website](https://invofest.axesys.xyz/) to explore air quality data and the smart city comparison.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Enjoy the benefits of data-driven urban living!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+As of now, we do not have an official license!
